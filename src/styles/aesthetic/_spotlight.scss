@@ -1,0 +1,48 @@
+.spotlight {
+  box-shadow: 0 0 0.5em 0.1em $yellow;
+  border-radius: 50%;
+
+  &__inner {
+    border-radius: 50%;
+    background-color: $yellow;
+    animation-name: spotlight-rotate;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    &::after {
+      content: "?";
+      color: $yellowDark;
+      font-size: $spotlightSize * 0.5;
+      line-height: 1;
+
+      @media (min-width: $vwMedium) {
+        font-size: $spotlightSize * 0.75;
+      }
+
+      @media (min-width: $vwLarge) {
+        font-size: $spotlightSize * 1.25;
+      }
+    }
+  }
+
+  &--active {
+    animation-name: spotlight-active;
+    animation-duration: 0.9s;
+    animation-delay: 0.2s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes spotlight-rotate {
+  0% { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(360deg); }
+}
+
+@keyframes spotlight-active {
+  to {
+    transform: rotateX(45deg) rotateY(0deg) rotateZ(-30deg);
+  }
+}

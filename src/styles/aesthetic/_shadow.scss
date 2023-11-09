@@ -1,0 +1,18 @@
+.shadow {
+  background: linear-gradient(to bottom, $babyBlueLight 0%, $babyBlueDark 100%);
+
+  &--active {
+    animation-name: shadow-active;
+    animation-duration: 1s;
+    animation-delay: 0.2s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes shadow-active {
+  to {
+    height: 100%;
+  }
+}

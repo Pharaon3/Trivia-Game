@@ -1,0 +1,139 @@
+.cube {
+  &__wrapper {
+    &--selected {
+      animation-name: cube-selected;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  &__inner {
+    animation-name: cube-rotate;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  &__core {
+    &--selected {
+      animation-name: cube-reveal;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-iteration-count: 1;
+      animation-delay: 0.8s;
+      animation-fill-mode: forwards;
+
+      @media (min-height: $vhMedium) {
+        animation-name: cube-reveal-medium;
+      }
+    
+      @media (min-height: $vhLarge) {
+        animation-name: cube-reveal-large;
+      }
+    }
+  }
+
+  &__face {
+    background-color: $beige400;
+    border: 0.25em solid $beige400;
+    font-size: 1.35em;
+    line-height: 1;
+    color: $beige900;
+    text-shadow: 0 1px 1px $beige200;
+    box-shadow: 0 0 0 0.1em $beige500 inset;
+
+    &--top {
+      background-color: $beige200;
+      border: 0.25em solid $beige200;
+      color: $beige700;
+      text-shadow: none;
+      box-shadow: 0 0 0 0.1em $beige400 inset;
+    }
+
+    &--bottom,
+    &--shadow {
+      background-color: $beige700;
+      border: 0 none;
+      text-shadow: none;
+    }
+
+    &--shadow {
+      opacity: .25;
+      box-shadow: 0 0 0.1em 0.1em $beige700;
+    }
+
+    @media (min-width: $vwMedium) {
+      font-size: 1.5em;
+    }
+
+    @media (min-width: $vwLarge) {
+      font-size: 1.8em;
+    }
+  }
+
+  &__core--selected &__face--shadow {
+    animation-name: cube-reveal-shadow;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-delay: 0.8s;
+    animation-fill-mode: forwards;
+
+    @media (min-height: $vhMedium) {
+      animation-name: cube-reveal-shadow-medium;
+    }
+  
+    @media (min-height: $vhLarge) {
+      animation-name: cube-reveal-shadow-large;
+    }
+  }
+}
+
+#cube-a .cube__text::after { content: "A"; }
+#cube-b .cube__text::after { content: "B"; }
+#cube-c .cube__text::after { content: "C"; }
+#cube-d .cube__text::after { content: "D"; }
+
+@keyframes cube-rotate {
+  0% { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(360deg); }
+}
+
+@keyframes cube-selected {
+  to { transform: rotateZ(-360deg); }
+}
+
+@keyframes cube-reveal {
+  to { transform: translateZ($cubeRevealTranslateZ) rotateZ(-45deg); }
+}
+
+@keyframes cube-reveal-medium {
+  to { transform: translateZ($cubeRevealTranslateZMedium) rotateZ(-45deg); }
+}
+
+@keyframes cube-reveal-large {
+  to { transform: translateZ($cubeRevealTranslateZLarge) rotateZ(-45deg); }
+}
+
+@keyframes cube-reveal-shadow {
+  to {
+    transform: translateZ(-$cubeRevealTranslateZ) rotateY(180deg) scale($cubeRevealShadowScale);
+    opacity: .5;
+  }
+}
+
+@keyframes cube-reveal-shadow-medium {
+  to {
+    transform: translateZ(-$cubeRevealTranslateZMedium) rotateY(180deg) scale($cubeRevealShadowScaleMedium);
+    opacity: .5;
+  }
+}
+
+@keyframes cube-reveal-shadow-large {
+  to {
+    transform: translateZ(-$cubeRevealTranslateZLarge) rotateY(180deg) scale($cubeRevealShadowScaleLarge);
+    opacity: .5;
+  }
+}

@@ -1,0 +1,21 @@
+.light {
+  background: $yellowLight;
+  background: linear-gradient(to bottom, $yellowLight 0%,rgba($yellowLight ,0.1) 100%);
+  opacity: .5;
+  clip-path: polygon(0% 100%, 50% 0%, 50% 0%, 100% 100%);
+
+  &--active {
+    animation-name: light-active;
+    animation-duration: 1s;
+    animation-delay: 0.2s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes light-active {
+  to {
+    clip-path: polygon(0% 100%, 10% 0%, 90% 0%, 100% 100%);
+  }
+}

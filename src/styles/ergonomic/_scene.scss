@@ -1,0 +1,55 @@
+.scene {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  padding-bottom: $scenePadding;
+  min-height: $sceneMinHeight;
+  max-height: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__inner {
+    position: relative;
+    width: $sceneWidth;
+    height: 100%;
+    top: -5px;
+    perspective: $scenePerspective;
+
+    @media (min-width: $vwMedium) {
+      width: $sceneWidthMedium;
+    }
+
+    @media (min-width: $vwLarge) {
+      width: $sceneWidthLarge;
+    }
+
+    @media (min-height: $vhMedium) {
+      perspective: $scenePerspectiveMedium;
+    }
+  
+    @media (min-height: $vhLarge) {
+      perspective: $scenePerspectiveLarge;
+    }
+  }
+
+  @media (min-width: $vwMedium) {
+    min-height: $sceneMinHeightMedium;
+  }
+
+  @media (min-width: $vwLarge) {
+    min-height: $sceneMinHeightLarge;
+  }
+
+  @media (min-height: $vhMedium) {
+    padding-bottom: $scenePaddingMedium;
+  }
+
+  @media (min-height: $vhLarge) {
+    padding-bottom: $scenePaddingLarge;
+  }
+
+  @media (min-width: $vwLarge) and (min-height: $vhLarge) {
+    padding-bottom: 0;
+  }
+}

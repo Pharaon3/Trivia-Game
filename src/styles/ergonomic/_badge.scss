@@ -1,0 +1,15 @@
+.badge {
+  position: absolute;
+  width: $badgeSize;
+  height: $badgeSize;
+
+  @media (min-width: $vwMedium) {
+    width: $badgeSizeMedium;
+    height: $badgeSizeMedium;
+  }
+
+  @media (min-width: $vwLarge) {
+    width: $badgeSizeLarge;
+    height: $badgeSizeLarge;
+  }
+}

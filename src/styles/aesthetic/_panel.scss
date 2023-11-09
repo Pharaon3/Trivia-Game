@@ -1,0 +1,122 @@
+.panel {
+  &__inner {
+    &--active {
+      animation-name: panel-active;
+      animation-duration: 0.8s;
+      animation-timing-function: ease;
+      animation-iteration-count: 1;
+      animation-delay: 0.2s;
+      animation-fill-mode: forwards;
+
+      @media (min-width: $vwMedium) {
+        animation-name: panel-active-medium;
+      }
+  
+      @media (min-width: $vwLarge) {
+        animation-name: panel-active-large;
+      }
+    }
+  }
+
+  &__question {
+    font-weight: normal;
+    text-align: center;
+    line-height: 1;
+    color: $white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  }
+
+  &__alternatives {
+    padding: 0 0.5em 0.3em;
+    list-style: none;
+  }
+
+  &__button {
+    padding: 0.5em 0.5em calc(0.5em + 1px) 0.5em;
+    background: rgba($beige200, 0.9);
+    background: linear-gradient(
+      to bottom,
+      rgba($beige200, 0.9) 0%,
+      rgba($beige400, 0.9) 100%
+    );
+    border: 1px solid transparent;
+    border-top-color: lighten($beige200, 2.5%);
+    border-bottom-color: $beige400;
+    border-radius: 0.3em;
+    text-align: left;
+    color: $brown;
+    line-height: 1;
+    text-shadow: 0 1px 0 $beige200;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.175);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      transform: scale(0.975);
+      box-shadow: 0 1px 1px rgba(0,0,0,0.175);
+    }
+
+    &:active {
+      text-shadow: none;
+      border-color: rgba(0,0,0,0.175);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.175) inset;
+    }
+
+    &::before {
+      color: rgba($brown, 0.75);
+      padding: 0 0.2em;
+    }
+  }
+
+  &__reboot {
+    padding: 0 0.5em 0.3em;
+  }
+  
+  &__reboot-inner {
+    background: transparent;
+    border: 0 none;
+    padding: 0.5em 0.5em calc(0.5em + 1px) 0.8em;
+    color: $white;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    line-height: 1;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  
+    &:hover,
+    &:focus {
+      outline: none;
+      transform: translateX(0.5em);
+    }
+  
+    &:active {
+      transform: translateX(1em);
+    }
+  }
+}
+
+#alternative-a::before { content: "A."; }
+#alternative-b::before { content: "B."; }
+#alternative-c::before { content: "C."; }
+#alternative-d::before { content: "D."; }
+
+@keyframes panel-active {
+  to {
+    transform: translateY($panelTranslateY) rotateX(35deg);
+  }
+}
+
+@keyframes panel-active-medium {
+  to {
+    transform: translateY($panelTranslateYMedium) rotateX(35deg);
+  }
+}
+
+@keyframes panel-active-large {
+  to {
+    transform: translateY($panelTranslateYLarge) rotateX(35deg);
+  }
+}

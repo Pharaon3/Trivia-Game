@@ -1,0 +1,25 @@
+.wall {
+  text-align: center;
+
+  &__title {
+    font-weight: normal;
+    color: $babyBlue;
+    line-height: 1;
+    text-shadow: 0 2px 1px rgba(255, 255, 255, .25);
+  }
+
+  &--active {
+    animation-name: wall-active;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes wall-active {
+  to {
+    transform: translateY(-5em) rotateX(35deg) scale(1.25);
+  }
+}
